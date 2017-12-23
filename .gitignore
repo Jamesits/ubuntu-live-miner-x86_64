@@ -1,0 +1,4 @@
+*.iso
+*.tar.gz
+rootfs/
+image/
