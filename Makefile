@@ -52,10 +52,17 @@ rootfs/etc/siggen-release: rootfs
 	cp script/write-image.sh rootfs/usr/local/bin/write-image
 	cp script/update-squashfs.sh rootfs/usr/local/bin/update-squashfs
 	cp script/prepare_rootfs.sh rootfs/tmp/prepare_rootfs.sh
+	cp config/etc/apt/apt.conf.d/timeout.conf rootfs/etc/apt/apt.conf.d/timeout.conf
+	cp config/etc/systemd/system/xmr-stak.service rootfs/etc/systemd/system/xmr-stak.service
+	cp script/xmr-stak rootfs/usr/local/bin/xmr-stak
+	cp script/libxmr-stak-backend.a rootfs/usr/local/bin/libxmr-stak-backend.a
+	cp script/libxmr-stak-c.a rootfs/usr/local/bin/libxmr-stak-c.a
+	cp -r config/etc/xmr-stak rootfs/etc/xmr-stak
 	# prepare os
 	chroot rootfs /tmp/prepare_rootfs.sh
 	# copy files after chroot
 	rm rootfs/tmp/prepare_rootfs.sh || true
+	cp config/etc/casper.conf rootfs/etc/casper.conf
 	cp config/etc/usbmount/usbmount.conf rootfs/etc/usbmount/usbmount.conf
 	cp config/etc/sysctl.d/panic.conf rootfs/etc/sysctl.d/panic.conf
 	cp config/etc/sysctl.d/miner.conf rootfs/etc/sysctl.d/miner.conf

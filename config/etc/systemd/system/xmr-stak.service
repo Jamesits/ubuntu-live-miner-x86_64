@@ -1,0 +1,59 @@
+[Unit]
+Description=xmr-stak miner
+After=network.target
+After=syslog.target
+
+[Install]
+WantedBy=multi-user.target
+Alias=xmr.service
+Alias=miner.service
+
+[Service]
+User=root
+Group=root
+Type=idle
+# Setting this to true can break replication and the Type=notify settings
+# See also bind-address mysqld option.
+PrivateNetwork=false
+#CapabilityBoundingSet=
+# Prevent writes to /usr, /boot, and /etc
+ProtectSystem=full
+# NoNewPrivileges=true
+PrivateDevices=true
+# Prevent accessing /home, /root and /run/user
+ProtectHome=true
+# Execute pre and post scripts as root, otherwise it does it as User=
+PermissionsStartOnly=true
+# apply user provided config file
+ExecStartPre=-/bin/sh -c "cp /cdrom/xmr-stak/{config,cpu}.txt /etc/xmr-stak"
+ExecStart=/usr/local/bin/xmr-stak -c /etc/xmr-stak/config.txt --cpu /etc/xmr-stak/cpu.txt
+#KillMode=process
+#KillSignal=SIGTERM
+# Don't want to see an automated SIGKILL ever
+#SendSIGKILL=no
+Restart=always
+RestartSec=5s
+UMask=007
+
+# Kernels like killing mysqld when out of memory because its big.
+# Lets temper that preference a little.
+# OOMScoreAdjust=-600
+
+# Explicitly start with high IO priority
+# BlockIOWeight=1000
+
+# If you don't use the /tmp directory for SELECT ... OUTFILE and
+# LOAD DATA INFILE you can enable PrivateTmp=true for a little more security.
+PrivateTmp=false
+
+# Number of files limit.
+LimitNOFILE=16364
+
+# Maximium core size.
+# LimitCore=
+
+# Nice priority.
+# Nice=-5
+
+# crash-script equalivent
+# FailureAction=
