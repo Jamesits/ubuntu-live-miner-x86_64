@@ -49,8 +49,8 @@ rootfs/etc/siggen-release: rootfs
 	mount --bind /dev rootfs/dev
 	# copy files before chroot
 	cp config/usr/share/plymouth/themes/ubuntu-text/ubuntu-text.plymouth rootfs/tmp/ubuntu-text.plymouth
-	cp script/install-siggen.sh rootfs/usr/local/bin/install-siggen
-	cp script/update-siggen.sh rootfs/usr/local/bin/update-siggen
+	cp script/write-image.sh rootfs/usr/local/bin/write-image
+	cp script/update-squashfs.sh rootfs/usr/local/bin/update-squashfs
 	cp script/prepare_rootfs.sh rootfs/tmp/prepare_rootfs.sh
 	# prepare os
 	chroot rootfs /tmp/prepare_rootfs.sh
