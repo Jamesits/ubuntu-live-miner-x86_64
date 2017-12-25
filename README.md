@@ -2,7 +2,7 @@
 
 Ubuntu LiveCD with xmr-stak pre-installed and pre-configured. Plug and mine!
 
- * Super small: ~400M rootfs
+ * Super light: ~400M rootfs, ~270M memory (without rootfs in RAM, ~700M with rootfs in RAM), <10s boot time
  * Super easy: plug, boot, mine
  * Super power: latest xmr-stak optimized for newer Intel CPU with large L3/L4 caches
 
@@ -48,20 +48,24 @@ To see miner speed report visit `http://your_miner_ip:9000`. The login credentia
 
 ## Configuration
 
+### Networking
+
+It accepts DHCPv4 and IPv6 SLAAC.
+
 ### Provide your own xmr-stak config
 
-Put configuration (`{config,cpu}.txt`) in `xmr-stak` folder in USB disk root. It will be applied at boot.
+Put configuration (`{config,cpu}.txt`) in `xmr-stak` folder in USB disk root. It will be applied at boot. If you want to provide your own `xmr-stak` executable you can put that in too.
 
-If you don't provide your own config, it will mine using one core as a test.
+If you don't provide your own config, it will mine Monero using one CPU core as a test load.
 
-### Load OS to RAM
+### Load OS to RAM (Optional)
 
-You can load the root filesystem to RAM, so you can unplug the USB disk after system boot and it will continue to run. It takes ~600MB of RAM space.
+You can load the root filesystem to RAM, so you can unplug the USB disk after system boot and it will continue to run. It requires ~460MB of RAM space and the boot time will be slightly longer.
 
 Edit `boot/grub/grub.cfg`, insert `toram` after `splash` before `---` so it looks like:
 
 ```
-linux	/casper/vmlinuz boot=casper root=/casper/filesystem.squashfs initrd=/casper/initrd.gz toram quiet splash ---
+linux	/casper/vmlinuz boot=casper root=/casper/filesystem.squashfs initrd=/casper/initrd.gz quiet splash toram ---
 ```
 
 ## Donation
