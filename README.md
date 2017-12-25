@@ -2,7 +2,7 @@
 
 Ubuntu LiveCD with xmr-stak pre-installed and pre-configured. Plug and mine!
 
- * Super light: ~400M rootfs, ~270M memory (without rootfs in RAM, ~700M with rootfs in RAM), <10s boot time
+ * Super light: ~400M rootfs, ~270M memory, <10s boot time
  * Super easy: plug, boot, mine
  * Super power: latest xmr-stak optimized for newer Intel CPU with large L3/L4 caches
 
