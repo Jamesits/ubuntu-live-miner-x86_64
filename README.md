@@ -19,6 +19,7 @@ sudo make all
 ## Caveat
 
  * There are some cases build script will umount `/dev` or `/proc` on build server. **Prepare to hard reset build server at any time.**
+ * CPU mining only. No support for graphics card.
  * EFI boot only. Legacy/CSM is not supported nor tested.
  * I recommend put the miners into a special LAN segment/VLAN and apply firewall rules (block all incoming).
 
@@ -40,6 +41,8 @@ To see miner speed report visit `http://your_miner_ip:9000`. The login credentia
 ### Provide your own xmr-stak config
 
 Put configuration (`{config,cpu}.txt`) in `xmr-stak` folder in USB disk root. It will be applied at boot.
+
+If you don't provide your own config, it will mine using one core as a test.
 
 ### Load OS to RAM
 
