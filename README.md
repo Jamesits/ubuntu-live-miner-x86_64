@@ -22,6 +22,10 @@ sudo make all
  * CPU mining only. No support for graphics card.
  * EFI boot only. Legacy/CSM is not supported nor tested.
  * I recommend put the miners into a special LAN segment/VLAN and apply firewall rules (block all incoming).
+ * The `xmr-stak` binary is built with donation level set to zero and using the following config:
+ ```shell
+ cmake .. -DCMAKE_BUILD_TYPE=Release -DMICROHTTPD_ENABLE=ON -DOpenSSL_ENABLE=ON -DCPU_ENABLE=ON -DHWLOC_ENABLE=ON -DOpenCL_ENABLE=OFF -DCUDA_ENABLE=OFF
+ ```
 
 ## Usage
 
