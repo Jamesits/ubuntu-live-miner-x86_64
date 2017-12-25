@@ -2,6 +2,10 @@
 
 Ubuntu LiveCD with xmr-stak pre-installed and pre-configured. Plug and mine!
 
+ * Super small: ~400M rootfs
+ * Super easy: plug, boot, mine
+ * Super power: latest xmr-stak optimized for newer Intel CPU with large L3/L4 caches
+
 ## Build
 
 Start from a Ubuntu 16.04:
