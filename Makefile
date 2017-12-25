@@ -69,7 +69,6 @@ rootfs/etc/siggen-release: rootfs
 	cp config/etc/sysctl.d/miner.conf rootfs/etc/sysctl.d/miner.conf
 	cp config/etc/systemd/system.conf rootfs/etc/systemd/system.conf
 	cp config/etc/issue rootfs/etc/issue
-	cp config/etc/hostname rootfs/etc/hostname
 	cp rootfs/etc/os-release rootfs/etc/siggen-release
 	umount -lf rootfs/dev/pts || true
 	umount -lf rootfs/sys || true
