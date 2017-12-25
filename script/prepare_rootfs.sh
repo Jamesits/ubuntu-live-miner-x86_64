@@ -48,8 +48,6 @@ while read u; do
 	adduser ${u} audio
 done < <(cut -d":" -f1 /tmp/userlist)
 
-cut -d":" -f1
-
 # install packages required by xmr-stak and used for debugging
 apt-get install -y libhwloc5 hwloc libmicrohttpd10 htop hwloc lm-sensors byobu w3m
 systemctl enable xmr-stak.service
