@@ -6,36 +6,15 @@ Ubuntu LiveCD with xmr-stak pre-installed and pre-configured. Plug and mine!
  * Super easy: plug, boot, mine
  * Super power: latest xmr-stak optimized for newer Intel CPU with large L3/L4 caches
 
-## Build
+## Caveats
 
-Start from a Ubuntu 16.04:
-
-```shell
-# first execution
-sudo make requirements
-# otherwise clean build temp files first
-sudo make clean
-
-# then build iso
-sudo make all
-```
-
-If you got some download error/hash sum mismatch error in the build process, run `sudo make all` again.
-
-## Caveat
-
- * There are some cases build script will umount `/dev` or `/proc` on build server. **Prepare to hard reset build server at any time.**
  * CPU mining only. No support for graphics card.
  * EFI boot only. Legacy/CSM is not supported nor tested.
- * I recommend put the miners into a special LAN segment/VLAN and apply firewall rules (block all incoming).
- * The `xmr-stak` binary is built with donation level set to zero and using the following config:
- ```shell
- cmake .. -DCMAKE_BUILD_TYPE=Release -DMICROHTTPD_ENABLE=ON -DOpenSSL_ENABLE=ON -DCPU_ENABLE=ON -DHWLOC_ENABLE=ON -DOpenCL_ENABLE=OFF -DCUDA_ENABLE=OFF
- ```
+ * I recommend put the miners into a special LAN segment/VLAN and apply firewall rules (block all incoming requests).
 
 ## Usage
 
-Burn the iso to USB disk using Rufus or other software. Plug in USB disk to destination PC and it should boot then start mining.
+Burn the iso to USB disk using [Rufus](https://rufus.akeo.ie/) or other software. Plug in USB disk to destination PC and it should boot then start mining.
 
 Login credential:
 
@@ -67,6 +46,29 @@ Edit `boot/grub/grub.cfg`, insert `toram` after `splash` before `---` so it look
 ```
 linux	/casper/vmlinuz boot=casper root=/casper/filesystem.squashfs initrd=/casper/initrd.gz quiet splash toram ---
 ```
+
+## Build
+
+There are some cases build script will umount `/dev` or `/proc` on build server. **Prepare to hard reset build server at any time.**
+
+Start from a Ubuntu 16.04 64-bit:
+
+```shell
+# first execution
+sudo make requirements
+# otherwise clean build temp files first
+sudo make clean
+
+# then build iso
+sudo make all
+```
+
+If you got some download error/hash sum mismatch error in the build process, run `sudo make all` again.
+
+The provided `xmr-stak` binary is built with donation level set to zero and using the following config:
+ ```shell
+ cmake .. -DCMAKE_BUILD_TYPE=Release -DMICROHTTPD_ENABLE=ON -DOpenSSL_ENABLE=ON -DCPU_ENABLE=ON -DHWLOC_ENABLE=ON -DOpenCL_ENABLE=OFF -DCUDA_ENABLE=OFF
+ ```
 
 ## Donation
 
