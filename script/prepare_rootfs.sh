@@ -39,7 +39,7 @@ systemctl enable ssh
 cp /tmp/ubuntu-text.plymouth /usr/share/plymouth/themes/ubuntu-text/ubuntu-text.plymouth
 
 # install packages required by xmr-stak and used for debugging
-apt-get install -y libhwloc5 hwloc libmicrohttpd10 htop hwloc lm-sensors byobu
+apt-get install -y libhwloc5 hwloc libmicrohttpd10 htop hwloc lm-sensors byobu w3m
 systemctl enable xmr-stak.service
 
 # rebuild initramfs

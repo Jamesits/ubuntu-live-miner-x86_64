@@ -24,9 +24,14 @@ PrivateDevices=true
 ProtectHome=true
 # Execute pre and post scripts as root, otherwise it does it as User=
 PermissionsStartOnly=true
+# Working directory
+WorkingDirectory=/etc/xmr-stak
 # apply user provided config file
-ExecStartPre=-/bin/sh -c "cp /cdrom/xmr-stak/{config,cpu}.txt /etc/xmr-stak"
-ExecStart=/usr/local/bin/xmr-stak -c /etc/xmr-stak/config.txt --cpu /etc/xmr-stak/cpu.txt
+ExecStartPre=-/bin/cp /cdrom/xmr-stak/config.txt /etc/xmr-stak/config.txt
+ExecStartPre=-/bin/cp /cdrom/xmr-stak/cpu.txt /etc/xmr-stak/cpu.txt
+ExecStartPre=-/bin/cp /cdrom/xmr-stak/nvidia.txt /etc/xmr-stak/nvidia.txt
+ExecStartPre=-/bin/cp /cdrom/xmr-stak/amd.txt /etc/xmr-stak/amd.txt
+ExecStart=/usr/local/bin/xmr-stak
 #KillMode=process
 #KillSignal=SIGTERM
 # Don't want to see an automated SIGKILL ever
@@ -47,7 +52,7 @@ UMask=007
 PrivateTmp=false
 
 # Number of files limit.
-LimitNOFILE=16364
+#LimitNOFILE=16364
 
 # Maximium core size.
 # LimitCore=
