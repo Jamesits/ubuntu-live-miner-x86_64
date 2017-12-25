@@ -16,8 +16,8 @@ Type=idle
 # See also bind-address mysqld option.
 PrivateNetwork=false
 #CapabilityBoundingSet=
-# Prevent writes to /usr, /boot, and /etc
-ProtectSystem=full
+# Prevent writes to /usr, /boot
+ProtectSystem=true
 # NoNewPrivileges=true
 PrivateDevices=true
 # Prevent accessing /home, /root and /run/user

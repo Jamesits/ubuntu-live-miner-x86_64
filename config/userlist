@@ -1,1 +1,1 @@
-iot:internetofshit:::miner default user:/home/iot:/bin/bash
+iot:internetofshit:10000:10000:miner default user:/home/iot:/bin/bash
