@@ -17,7 +17,7 @@ Type=idle
 PrivateNetwork=false
 #CapabilityBoundingSet=
 # Prevent writes to /usr, /boot
-ProtectSystem=true
+ProtectSystem=false
 # NoNewPrivileges=true
 PrivateDevices=true
 # Prevent accessing /home, /root and /run/user
@@ -31,6 +31,8 @@ ExecStartPre=-/bin/cp /cdrom/xmr-stak/config.txt /etc/xmr-stak/config.txt
 ExecStartPre=-/bin/cp /cdrom/xmr-stak/cpu.txt /etc/xmr-stak/cpu.txt
 ExecStartPre=-/bin/cp /cdrom/xmr-stak/nvidia.txt /etc/xmr-stak/nvidia.txt
 ExecStartPre=-/bin/cp /cdrom/xmr-stak/amd.txt /etc/xmr-stak/amd.txt
+ExecStartPre=-/bin/cp /cdrom/xmr-stak/xmr-stak /usr/local/bin/xmr-stak
+ExecStartPre=-/bin/chmod +x /usr/local/bin/xmr-stak
 ExecStart=/usr/local/bin/xmr-stak
 #KillMode=process
 #KillSignal=SIGTERM
