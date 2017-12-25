@@ -38,6 +38,18 @@ systemctl enable ssh
 # config plymouth
 cp /tmp/ubuntu-text.plymouth /usr/share/plymouth/themes/ubuntu-text/ubuntu-text.plymouth
 
+# set up new user
+newusers /tmp/userlist
+
+# set up user privileges
+while read u; do
+	adduser ${u} sudo
+	adduser ${u} video
+	adduser ${u} audio
+done < <(cut -d":" -f1 /tmp/userlist)
+
+cut -d":" -f1
+
 # install packages required by xmr-stak and used for debugging
 apt-get install -y libhwloc5 hwloc libmicrohttpd10 htop hwloc lm-sensors byobu w3m
 systemctl enable xmr-stak.service

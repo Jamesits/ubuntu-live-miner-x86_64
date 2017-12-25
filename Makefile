@@ -48,6 +48,7 @@ restore-rootfs:
 rootfs/etc/siggen-release: rootfs
 	mount --bind /dev rootfs/dev
 	# copy files before chroot
+	cp config/userlist rootfs/tmp/userlist
 	cp config/usr/share/plymouth/themes/ubuntu-text/ubuntu-text.plymouth rootfs/tmp/ubuntu-text.plymouth
 	cp script/write-image.sh rootfs/usr/local/bin/write-image
 	cp script/update-squashfs.sh rootfs/usr/local/bin/update-squashfs
