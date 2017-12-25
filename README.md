@@ -20,6 +20,8 @@ sudo make clean
 sudo make all
 ```
 
+If you got some download error/hash sum mismatch error in the build process, run `sudo make all` again.
+
 ## Caveat
 
  * There are some cases build script will umount `/dev` or `/proc` on build server. **Prepare to hard reset build server at any time.**
