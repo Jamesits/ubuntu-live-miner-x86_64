@@ -13,11 +13,11 @@ Ubuntu LiveCD with xmr-stak pre-installed and pre-configured. Plug and mine!
  * CPU mining only. No support for graphics card.
  * EFI boot only. Legacy/CSM is not supported nor tested.
  * I recommend put the miners into a special LAN segment/VLAN and apply firewall rules (block all incoming requests).
- * The `xmr-stak` is built on my Intel i7-4770HQ with `--march=native`. It may cause issues on other platforms.
+ * The embedded `xmr-stak` is built on my Intel i7-4770HQ with `--march=native`. It may cause issues on other platforms.
 
 ## Usage
 
-Burn the iso to USB disk using [Rufus](https://rufus.akeo.ie/) or other software. Plug in USB disk to destination PC and it should boot then start mining.
+Burn the iso to USB disk using [Rufus](https://rufus.akeo.ie/) or other software, or just create a FAT32 partition with EFI boot flag set and uncompress the files into it. Plug in USB disk to destination PC and it should boot then start mining.
 
 Login credential:
 
@@ -26,7 +26,7 @@ Login credential:
 
 You can log in using SSH.
 
-To see miner speed report visit `http://your_miner_ip:9000`. The login credential is the same as above.
+To see miner speed report visit `http://your_miner_ip:9000`. The login credential is the same as above (if not overrided by your own `config.txt`).
 
 ## Configuration
 
@@ -47,7 +47,6 @@ If you don't provide your own config, it will mine Monero using one CPU core as 
 You can load the root filesystem to RAM, so you can unplug the USB disk after system boot and it will continue to run. It requires ~460MB of RAM space and the boot time will be slightly longer.
 
 Edit `boot/grub/grub.cfg`, add `toram` to kernel commandline.
-```
 
 ## Build
 
@@ -67,10 +66,7 @@ sudo make all
 
 If you got some download error/hash sum mismatch error in the build process, run `sudo make all` again.
 
-The provided `xmr-stak` binary is built with donation level set to zero and using the following config:
- ```shell
- cmake .. -DCMAKE_BUILD_TYPE=Release -DMICROHTTPD_ENABLE=ON -DOpenSSL_ENABLE=ON -DCPU_ENABLE=ON -DHWLOC_ENABLE=ON -DOpenCL_ENABLE=OFF -DCUDA_ENABLE=OFF
- ```
+The provided `xmr-stak` binary is built with donation level set to zero using [this script](script/compile-xmr-stak.sh).
 
 ## Donation
 
