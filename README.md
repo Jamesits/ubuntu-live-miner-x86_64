@@ -50,7 +50,13 @@ Edit `boot/grub/grub.cfg`, add `toram` to kernel commandline.
 
 ## Build
 
-There are some cases build script will umount `/dev` or `/proc` on build server. **Prepare to hard reset build server at any time.**
+### Build xmr-stak binary
+
+The provided `xmr-stak` binary is built using [this script](script/compile-xmr-stak.sh).
+
+### Build Live CD
+
+Caveat: There are some cases build script will umount `/dev` or `/proc` on build server. **Prepare to hard reset build server at any time.**
 
 Start from a Ubuntu 16.04 64-bit:
 
@@ -65,8 +71,6 @@ sudo make all
 ```
 
 If you got some download error/hash sum mismatch error in the build process, run `sudo make all` again.
-
-The provided `xmr-stak` binary is built with donation level set to zero using [this script](script/compile-xmr-stak.sh).
 
 ## Donation
 
