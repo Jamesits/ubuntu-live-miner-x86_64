@@ -13,6 +13,7 @@ Ubuntu LiveCD with xmr-stak pre-installed and pre-configured. Plug and mine!
  * CPU mining only. No support for graphics card.
  * EFI boot only. Legacy/CSM is not supported nor tested.
  * I recommend put the miners into a special LAN segment/VLAN and apply firewall rules (block all incoming requests).
+ * The `xmr-stak` is built on my Intel i7-4770HQ with `--march=native`. It may cause issues on other platforms.
 
 ## Usage
 
@@ -33,6 +34,8 @@ To see miner speed report visit `http://your_miner_ip:9000`. The login credentia
 
 It accepts DHCPv4 and IPv6 SLAAC.
 
+If you need static IP address, add `ip=IFACE,ADDRESS,NETMASK,GATEWAY[:IFACE,ADDRESS,NETMASK,GATEWAY]*` to `boot/grub/grub.cfg` kernel comandline.
+
 ### Provide your own xmr-stak config
 
 Put configuration (`{config,cpu}.txt`) in `xmr-stak` folder in USB disk root. It will be applied at boot. If you want to provide your own `xmr-stak` executable you can put that in too.
@@ -43,10 +46,7 @@ If you don't provide your own config, it will mine Monero using one CPU core as 
 
 You can load the root filesystem to RAM, so you can unplug the USB disk after system boot and it will continue to run. It requires ~460MB of RAM space and the boot time will be slightly longer.
 
-Edit `boot/grub/grub.cfg`, insert `toram` after `splash` before `---` so it looks like:
-
-```
-linux	/casper/vmlinuz boot=casper root=/casper/filesystem.squashfs initrd=/casper/initrd.gz quiet splash toram ---
+Edit `boot/grub/grub.cfg`, add `toram` to kernel commandline.
 ```
 
 ## Build
