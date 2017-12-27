@@ -31,7 +31,7 @@ dbus-uuidgen > /var/lib/dbus/machine-id
 # install livecd packages
 apt-get -y upgrade
 apt-get install -y ubuntu-standard casper lupin-casper discover laptop-detect os-prober plymouth-x11 openssh-server usbmount util-linux gdisk avahi-autoipd
-apt-get install -y --install-recommends linux-generic-hwe-16.04
+apt-get install -y --install-recommends linux-generic-hwe-16.04 linux-tools-generic-hwe-16.04 linux-tools-common
 apt-get -y -o DPkg::options::="--force-confdef" -o DPkg::options::="--force-confold" install grub-efi-amd64 grub-efi-amd64-signed
 systemctl enable ssh
 
