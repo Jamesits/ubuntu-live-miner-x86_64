@@ -76,7 +76,5 @@ If you got some download error/hash sum mismatch error in the build process, run
 
 Please donate if you like my work!
 
- * BTC: 1D96z5NEC64mRXDj4Mt1GjNLVb17aUA3HK
- * LTC: LKGpARdvAfJ6c583Wv28ivBCKCkan2ELbV
- * ETH: 0xfc5eF900f1399596fDB461391D8eEB3689729F3b
- * ETN: etnkGeJXNi3JyEL3FnKiA6gVcBXHevrx5GyyuQXAUivyYYaej3LYaxo1boFtd39PHLF9UDVWaWtzRVnR7ZAXmnEK1QcPYis4HD
+ * BTC `1Cm42dB58VcHFC4HZSToMESGbXJr82JaSZ`
+ * ETH `0x6fDEb40271b9E027CAF6Fb4feBF5432a9F36EF1F`
